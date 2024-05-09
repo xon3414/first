@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Bosh sahifa {% endblock title %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <br/>
+        <div class="jumbotron">
+            <h1 class="display-4">Assalomu alaykum!</h1>
+            <hr class="my-2">
+        </div>
+        <div class="jumbotron">
+            <h1>{{ user.username | title }} blogiga hush kelibsiz!</h1>
+            <p class="lead">Umarxonning shaxsiy programmasi.</p>
+            <hr class="my-4">
+            <p> Bu yerda ancha muncha malumotlarni topishingiz mumkin.</p>
+            <p><a class="btn btn-info" href="{% url 'article_list' %}" role="button">Mening postlarim</a></p>
+        </div>
+    {% else %}
+        <p>Saytga kirmagansiz</p>
+        <a href="{% url 'login' %}">Log in</a> |
+        <a href="{% url 'signup' %}">Sign up</a>
+    {% endif %}
+{% endblock content %}
