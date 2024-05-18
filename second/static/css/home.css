@@ -1,0 +1,31 @@
+.col {
+    margin: 10px;
+    padding: 10px;
+    border: 10px solid;
+    text-align: center;
+    font-family: "Arial Black", sans-serif;
+    font-size: 40px;
+}
+
+#row1 {
+    margin-top: 30px;
+}
+
+.diagramma {
+    display: inline-block;
+    position: absalute;
+}
+.diagramma2 {
+    display: inline-block;
+    margin-left: 2000px;
+    position: absalute;
+    rigth: 20px;
+}
+
+script {
+    display: inline
+}
+
+canvas {
+    border: 2px solid #858080;
+}

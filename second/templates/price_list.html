@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Прайс-лист{% endblock title %}
+
+
+{% block content %}
+    <h2>Прайс-лист</h2>
+
+<div class="container">
+  <table class="table">
+      <tr class="table-secondary">
+        <th>Группа материала</th>
+        <th>Материал модель</th>
+        <th>Прайс</th>
+      </tr>
+  {% for article in object_list %}
+  <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ article.title }}</td>
+        <td>{{ article.summary }} $</td>
+  </tr>
+  {% endfor %}
+
+</table>
+</div>
+{% endblock content %}

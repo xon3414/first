@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Bosh sahifa {% endblock title %}
+{% block content %}
+
+
+    {% if user.is_authenticated %}
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<div class = "container">
+    <div class = "row" id="row1">
+        <div class="col" style="border-color: lightgreen; color: green">
+            ARTEL
+        </div>
+        <div class="col" style="border-color: red; color: red">
+            SHIVAKI
+        </div>
+    </div>
+        <div class = "row">
+        <div class="col" style="border-color: blue; color: blue">
+            SAMSUNG
+        </div>
+        <div class="col" style="border-color: DodgerBlue; color: DodgerBlue">
+            ROYAL
+        </div>
+    </div>
+        <div class = "row">
+        <div class="col" style="border-color: #555555; color: #555555">
+            AVALON
+        </div>
+        <div class="col" style="border-color: gray; color: gray">
+            VESTA
+        </div>
+    </div>
+</div>
+
+
+<div class="container" style="position: relative">
+    <div class="diagramma">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <canvas id="myMixedChart"></canvas>
+
+        <script>
+            let ctx = document.getElementById('myMixedChart')
+                .getContext('2d');
+            let mixedChart = new Chart(ctx, {
+                type: 'radar', // primary chart type is set to radar
+                data: {
+                    labels: ['Eating', 'Drinking',
+                        'Sleeping', 'Designing'],
+                    datasets: [{
+                        type: 'line', // line chart dataset
+                        label: 'Line Dataset',
+                        data: [65, 59, 80, 81],
+                        fill: true,
+                        borderColor: 'rgba(54, 162, 235, 0.2)'
+                    }, {
+                        type: 'radar', // radar chart dataset
+                        label: 'Radar Dataset',
+                        data: [36, 48, 40, 19],
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)'
+                    }]
+                },
+                options: {
+                    elements: {
+                        line: {
+                            tension: 0.1 // disables bezier curves
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
+
+    <div class="diagramma2">
+
+    <script src=
+"https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+
+    <!-- Creating an element -->
+    <canvas id="myBarChart"
+            width="803"
+            height="180">
+    </canvas>
+
+    <script>
+
+        // data sample for the chart
+        let data = {
+            labels: ['Label 1', 'Label 2',
+                     'Label 3', 'Label 4',
+                     'Label 5'],
+            datasets: [{
+                label: 'Sample Bar Chart',
+                data: [12, 17, 3, 8, 2],
+                backgroundColor: 'rgba(70, 192, 192, 0.6)',
+                borderColor: 'rgba(150, 100, 255, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        // Configuration options for the chart
+        let options = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Get the canvas element
+        let ctx = document.getElementById('myBarChart')
+            .getContext('2d');
+
+        // Create the bar chart
+        let myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+    </script>
+
+    </div>
+</div>
+    {% else %}
+        <p>Saytga kirmagansiz</p>
+        <a href="{% url 'login' %}">Log in</a> |
+        <a href="{% url 'signup' %}">Sign up</a>
+    {% endif %}
+{% endblock content %}

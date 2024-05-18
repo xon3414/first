@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Каталог{% endblock title %}
+{% block content %}
+    <style>
+        .prd
+        {
+            margin-top: 6;
+            padding-left: 20;
+            font-family: arial;
+            font-size: 18px;
+        }
+    </style>
+
+    <h2>Каталог</h2>
+    <br/>
+    {% for article in object_list %}
+        <p><a class="prd" href="{% url 'category' article.name %}">{{ article.name }}</a></p>
+
+    {% endfor %}
+
+<p><a class="btn btn-info" href="{% url 'add_product' %}" role="button">Add product</a></p>
+
+
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+    {% block title %}Modellar{% endblock title %}
+
+{% block content %}
+
+    {% if category_posts %}
+
+    <h3>{{ pro.title }}</h3>
+<style>
+div.gallery {
+  margin: 5px;
+  padding-bottom: 0px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 220px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+  padding: 0px;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+
+<ul>
+    {% for article in category_posts %}
+        <div class="gallery">
+            <div style="text-align: right; padding-right: 8px; color: darkgreen">{{ article.summary }}$</div>
+            <a target="_self" href="{{ article.photo.url }}">
+         {% if article.photo %}
+         <img src="{{ article.photo.url }}" alt="{{ article.title }}" width="500" height="500">
+         {%  endif %}
+             </a>
+            <div class="desc"><a href="{% url 'article_detail' article.pk  %}">{{ article.title }}</a></div>
+        </div>
+
+            <!--<div class="card-body">
+                {{ article.summary }}...<a href="{% url 'article_detail' article.pk  %}">batafsil</a>
+            </div>
+            <div class="card-footer text-left text-muted">
+                <span class="text-muted">muallif {{ article.author | title }} • {{ article.date }}</span>
+            </div>-->
+
+    {% endfor %}
+</ul>
+
+
+    {% else %}
+        <h3>Uzr hech qanday model yo'q</h3>
+    {% endif %}
+
+    <p><a class="btn btn-info" href="{% url 'article_new' %}" role="button">Add model</a></p>
+{% endblock content %}
